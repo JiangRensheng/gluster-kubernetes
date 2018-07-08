@@ -72,7 +72,7 @@
     timeout: 60
 
 - name: get k8s server and client versions
-  command: kubectl version
+  command: kubectl version --short --client | awk '{print $3}'
   register: kubectl_version
 
 - name: create weave network
