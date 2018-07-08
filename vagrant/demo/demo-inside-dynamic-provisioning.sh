@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo yum install -y pv > /dev/null 2>&1
+sudo yum install -y --nogpgcheck pv > /dev/null 2>&1
 
 . ./util.sh
 
@@ -22,7 +22,6 @@ metadata:
   name: mysc
 provisioner: kubernetes.io/glusterfs
 parameters:
-  endpoint: "heketi-storage-endpoints"
   resturl: "$HEKETI_CLI_SERVER"
   restuser: "obnox"
   restuserkey: "I don't tell you"
@@ -74,7 +73,7 @@ metadata:
 spec:
   containers:
   - name: myapp
-    image: gcr.io/google_containers/nginx-slim:0.8
+    image: k8s.gcr.io/google_containers/nginx-slim:0.8
     ports:
     - name: web
       containerPort: 80

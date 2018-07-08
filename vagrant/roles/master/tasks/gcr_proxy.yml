@@ -5,7 +5,11 @@
     state: present
     disable_gpg_check: yes
   with_items:
-  - docker-python
+  - python-pip
+
+- name: install python docker module
+  pip:
+    name: docker
 
 - name: check for nginx-slim image
   uri:

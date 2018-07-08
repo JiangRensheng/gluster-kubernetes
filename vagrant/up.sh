@@ -1,6 +1,7 @@
 #!/bin/sh
 
-export ANSIBLE_TIMEOUT=60
+export ANSIBLE_TIMEOUT=120
+export VAGRANT_USE_VAGRANT_TRIGGERS=true
 vagrant up --no-provision "${@}" \
     && vagrant provision
 

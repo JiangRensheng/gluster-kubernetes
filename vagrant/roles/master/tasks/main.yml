@@ -85,3 +85,7 @@
 
 - name: wait for dns to be ready
   wait_for: host={{ kubednsaddress.stdout }} port=53 state=started timeout=1800
+
+- include: dashboard.yml
+  when:
+  - deploy_dashboard | default(false)
